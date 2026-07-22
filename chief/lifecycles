@@ -1,0 +1,9 @@
+["0.2.0 shared"]
+download = "https://github.com/ryancundiff/chief/releases/download/v0.2.0/chief_lifecycles-0.2.0.tar.gz"
+description = "The Lifecycles extension for Chief: binds events to module methods."
+
+["0.2.0 shared".target]
+environment = "shared"
+
+["0.2.0 shared".dependencies]
+core = { name = "chief/core", version = "^0.1.0" }
