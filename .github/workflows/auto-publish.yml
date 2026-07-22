@@ -1,0 +1,105 @@
+# Auto-merges publish PRs opened by `lpm publish`.
+#
+# A PR is auto-merged only when EVERY changed file is a registry path
+# (<scope>/<name> entry or <scope>/owners.toml), nothing is deleted or
+# renamed, every file parses as TOML, and the PR author owns every touched
+# scope (or is claiming a brand-new scope with an owners.toml that lists
+# them). Anything else — config.toml, README, workflow edits — is ignored
+# and waits for manual review.
+#
+# Uses pull_request_target so fork PRs get a token that can merge. Safe
+# because PR content is only ever fetched and parsed as data, never checked
+# out or executed.
+name: auto-publish
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  validate-and-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate registry changes
+        id: validate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, re, sys, tomllib, urllib.request
+
+          repo, pr, author = os.environ["REPO"], os.environ["PR"], os.environ["AUTHOR"]
+          token = os.environ["GITHUB_TOKEN"]
+
+          def api(url):
+              req = urllib.request.Request(url, headers={
+                  "Authorization": f"Bearer {token}",
+                  "Accept": "application/vnd.github.raw+json",
+              })
+              with urllib.request.urlopen(req) as resp:
+                  return resp.read()
+
+          def api_json(url):
+              return json.loads(api(url))
+
+          def base_owners(scope):
+              """Owner logins for a scope on main, or None when unclaimed."""
+              try:
+                  raw = api(f"https://api.github.com/repos/{repo}/contents/{scope}/owners.toml")
+              except urllib.error.HTTPError as error:
+                  if error.code == 404:
+                      return None
+                  raise
+              return [o.lower() for o in tomllib.loads(raw.decode()).get("owners", [])]
+
+          def skip(reason):
+              print(f"not auto-merging: {reason}")
+              print("merge=false", file=open(os.environ["GITHUB_OUTPUT"], "a"))
+              sys.exit(0)
+
+          files = api_json(f"https://api.github.com/repos/{repo}/pulls/{pr}/files?per_page=100")
+          if not files:
+              skip("empty PR")
+
+          package_re = re.compile(r"^[a-z0-9_-]+/[a-z0-9_-]+$")
+          owners_re = re.compile(r"^([a-z0-9_-]+)/owners\.toml$")
+          claimed = {}
+
+          for f in files:
+              path, status = f["filename"], f["status"]
+              if status not in ("added", "modified"):
+                  skip(f"{path} is {status}; only adds/edits auto-merge")
+              if not (package_re.match(path) or owners_re.match(path)):
+                  skip(f"{path} is not a registry path")
+              try:
+                  content = tomllib.loads(api(f["contents_url"]).decode())
+              except Exception as error:
+                  skip(f"{path} is not valid TOML: {error}")
+              if match := owners_re.match(path):
+                  claimed[match.group(1)] = [o.lower() for o in content.get("owners", [])]
+
+          for scope in {f["filename"].split("/")[0] for f in files}:
+              owners = base_owners(scope)
+              if owners is None:
+                  # New scope: the PR itself must claim it for the author.
+                  if author.lower() not in claimed.get(scope, []):
+                      skip(f"new scope '{scope}' must add an owners.toml listing @{author}")
+              elif author.lower() not in owners:
+                  skip(f"@{author} does not own scope '{scope}'")
+
+          print("all checks passed")
+          print("merge=true", file=open(os.environ["GITHUB_OUTPUT"], "a"))
+          EOF
+
+      - name: Merge
+        if: steps.validate.outputs.merge == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --squash
