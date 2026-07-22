@@ -1,0 +1,6 @@
+["0.1.0 shared"]
+download = "https://github.com/ryancundiff/chief/releases/download/v0.1.0/chief_core-0.1.0.tar.gz"
+description = "The core of Chief, a strictly and fully typed Luau module framework for Roblox. It loads modules, runs the Init/Start boot barrier, and fires hooks for extensions — nothing else. Roblox event lifecycles, dependency injection, and everything domain-specific live in extensions."
+
+["0.1.0 shared".target]
+environment = "shared"
