@@ -1,0 +1,6 @@
+["0.1.0 shared"]
+download = "https://github.com/ryancundiff/chief/releases/download/v0.1.0/chief_bin-0.1.0.tar.gz"
+description = "A small, strictly typed cleanup container for Roblox: connections, instances, threads, and functions, emptied in reverse insertion order."
+
+["0.1.0 shared".target]
+environment = "shared"
