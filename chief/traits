@@ -1,0 +1,10 @@
+["0.1.0 shared"]
+download = "https://github.com/ryancundiff/chief/releases/download/v0.1.0/chief_traits-0.1.0.tar.gz"
+description = "The Traits extension for Chief: binds behavior to Roblox instances through CollectionService tags."
+
+["0.1.0 shared".target]
+environment = "shared"
+
+["0.1.0 shared".dependencies]
+bin = { name = "chief/bin", version = "^0.1.0" }
+core = { name = "chief/core", version = "^0.1.0" }
