@@ -1,0 +1,2 @@
+# GitHub logins allowed to publish packages in this scope.
+owners = ["ryancundiff"]
