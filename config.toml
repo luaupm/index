@@ -1,0 +1,10 @@
+# luaupm package index, read by the lpm CLI.
+#
+# This is a pesde-format index: package files live at <scope>/<name>, keyed
+# by "<version> <target>". Every entry published by lpm carries its own
+# `download` URL (a GitHub release asset), so no registry server, `api`, or
+# `download` template is needed here.
+
+# Required for `lpm publish`: a GitHub OAuth App client ID (device flow
+# enabled). See the repo README.
+github_oauth_id = "Ov23li095uCP53ZqEniG"
