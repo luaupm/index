@@ -1,0 +1,14 @@
+["0.4.0 shared"]
+description = "Unofficial fork of vide for the new type solver. Comes with instance types!"
+download = "https://cdn.luaupm.com/alicesaidhi/vide/0.4.0.tar.gz"
+name = "alicesaidhi/vide"
+published_at = "2026-07-26T02:46:53Z"
+published_by = "savruun"
+repository = "https://github.com/centau/vide"
+target = "shared"
+type = "roblox"
+version = "0.4.0"
+
+["0.4.0 shared".dependencies.vide]
+name = "alicesaidhi/vide"
+version = "^"
