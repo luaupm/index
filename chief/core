@@ -1,0 +1,10 @@
+["0.1.0 shared"]
+description = "The core of Chief, a strictly and fully typed Luau module framework for Roblox. It loads modules, runs the Init/Start boot barrier, and fires hooks for extensions — nothing else. Roblox event lifecycles, dependency injection, and everything domain-specific live in extensions."
+download = "https://cdn.luaupm.com/chief/core/0.1.0.tar.gz"
+name = "chief/core"
+published_at = "2026-07-26T05:12:01Z"
+published_by = "ryancundiff"
+repository = "https://github.com/ryancundiff/chief"
+target = "shared"
+type = "roblox"
+version = "0.1.0"
