@@ -1,0 +1,18 @@
+["0.1.0 shared"]
+description = "The Traits extension for Chief: binds behavior to Roblox instances through CollectionService tags."
+download = "https://cdn.luaupm.com/chief/traits/0.1.0.tar.gz"
+name = "chief/traits"
+published_at = "2026-07-26T05:12:13Z"
+published_by = "ryancundiff"
+repository = "https://github.com/ryancundiff/chief"
+target = "shared"
+type = "roblox"
+version = "0.1.0"
+
+["0.1.0 shared".dependencies.bin]
+name = "chief/bin"
+version = "^0.1.0"
+
+["0.1.0 shared".dependencies.core]
+name = "chief/core"
+version = "^0.1.0"
