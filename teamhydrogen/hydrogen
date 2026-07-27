@@ -1,0 +1,10 @@
+["0.3.6 shared"]
+description = "Game framework for Roblox with all the essentials needed!"
+download = "https://cdn.luaupm.com/teamhydrogen/hydrogen/0.3.6.tar.gz"
+name = "teamhydrogen/hydrogen"
+published_at = "2026-07-27T00:44:03Z"
+published_by = "iSophes"
+repository = "https://github.com/teamhydrogen/hydrogen"
+target = "shared"
+type = "roblox"
+version = "0.3.6"
