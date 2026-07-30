@@ -1,0 +1,9 @@
+["0.1.0 luau"]
+description = "An adapter layer for mayari"
+download = "https://cdn.luaupm.com/mayari/adpt/0.1.0.tar.gz"
+name = "mayari/adpt"
+published_at = "2026-07-30T05:10:26Z"
+published_by = "BizWiz3"
+target = "luau"
+type = "luau"
+version = "0.1.0"
