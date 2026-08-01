@@ -1,0 +1,10 @@
+["1.1.1 luau"]
+description = "Numerical luau for all your scientific urges. Bring scientific computing in a way easy to understand and predict."
+download = "https://cdn.luaupm.com/chocolatebar2410/numluau/1.1.1.tar.gz"
+name = "chocolatebar2410/numluau"
+published_at = "2026-08-01T06:24:09Z"
+published_by = "chocolate-bar2410"
+repository = "https://github.com/chocolate-bar2410/numluau"
+target = "luau"
+type = "luau"
+version = "1.1.1"
