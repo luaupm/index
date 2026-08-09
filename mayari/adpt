@@ -27,3 +27,13 @@ published_by = "BizWiz3"
 target = "luau"
 type = "luau"
 version = "0.1.2"
+
+["0.1.3 luau"]
+description = "An adapter layer for mayari."
+download = "https://cdn.luaupm.com/mayari/adpt/0.1.3.tar.gz"
+name = "mayari/adpt"
+published_at = "2026-08-09T10:53:07Z"
+published_by = "BizWiz3"
+target = "luau"
+type = "luau"
+version = "0.1.3"
