@@ -7,3 +7,17 @@ published_by = "BizWiz3"
 target = "luau"
 type = "luau"
 version = "0.1.7"
+
+["0.1.8 luau"]
+description = "Shared utilities for the Mayari ecosystem."
+download = "https://cdn.luaupm.com/mayari/common/0.1.8.tar.gz"
+name = "mayari/common"
+published_at = "2026-08-09T10:50:25Z"
+published_by = "BizWiz3"
+target = "luau"
+type = "luau"
+version = "0.1.8"
+
+["0.1.8 luau".dependencies.adpt]
+name = "mayari/adpt"
+version = "^"
