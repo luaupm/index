@@ -1,0 +1,19 @@
+["0.0.1 luau"]
+description = "This is a test package"
+download = "https://cdn.luaupm.com/test/test-pkg/0.0.1.tar.gz"
+name = "test/test-pkg"
+published_at = "2026-08-10T08:17:53Z"
+published_by = "BizWiz3"
+repository = "https://github.com/mayari-org/test-pkg"
+target = "luau"
+type = "luau"
+version = "0.0.1"
+
+["0.0.1 luau".provenance]
+commit = "b41a3453de446e1d03aafd8738e9d40dfce4eac5"
+digest = "sha256:7c85711595b42bac76736e6272fbbfd61e09dbfd42e894971e28f0fc9cfa44c3"
+ref = "refs/tags/v0.0.1"
+repository = "mayari-org/test-pkg"
+run_attempt = 1
+run_id = "31369445724"
+workflow = ".github/workflows/ci.yml"
