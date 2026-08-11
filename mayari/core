@@ -1,0 +1,27 @@
+["0.7.0 luau"]
+description = "An Adaptive Luau Web Backend Framework."
+download = "https://cdn.luaupm.com/mayari/core/0.7.0.tar.gz"
+name = "mayari/core"
+published_at = "2026-08-11T13:21:00Z"
+published_by = "BizWiz3"
+repository = "https://github.com/mayari-org/mayari"
+target = "luau"
+type = "luau"
+version = "0.7.0"
+
+["0.7.0 luau".dependencies.adpt]
+name = "mayari/adpt"
+version = "^"
+
+["0.7.0 luau".dependencies.common]
+name = "mayari/common"
+version = "^"
+
+["0.7.0 luau".provenance]
+commit = "9ccb3c9cf042d50edd80b38867b07134b0be8395"
+digest = "sha256:a551b0176966d6801940e4d9eee36696a89774ef7dc5ce02bd6058ee2e3496d7"
+ref = "refs/tags/v0.7.0"
+repository = "mayari-org/mayari"
+run_attempt = 1
+run_id = "31495696735"
+workflow = ".github/workflows/release.yml"
