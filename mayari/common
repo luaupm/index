@@ -21,3 +21,17 @@ version = "0.1.8"
 ["0.1.8 luau".dependencies.adpt]
 name = "mayari/adpt"
 version = "^"
+
+["0.1.9 luau"]
+description = "Shared utilities for the Mayari ecosystem."
+download = "https://cdn.luaupm.com/mayari/common/0.1.9.tar.gz"
+name = "mayari/common"
+published_at = "2026-08-12T03:02:29Z"
+published_by = "BizWiz3"
+target = "luau"
+type = "luau"
+version = "0.1.9"
+
+["0.1.9 luau".dependencies.adpt]
+name = "mayari/adpt"
+version = "^"
